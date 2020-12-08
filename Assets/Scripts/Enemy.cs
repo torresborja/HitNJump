@@ -47,14 +47,24 @@ public class Enemy : MonoBehaviour
 
         //Choque con otro enemigo
         hit = Physics2D.Raycast(new Vector3(transform.position.x + movHor * frontCheck, transform.position.y, transform.position.z), new Vector3(movHor, 0, 0), frontDist);
-        if (hit.collider != null)
-        {
-            if (hit.collider.gameObject.CompareTag("Enemy"))
-            {
-                movHor = movHor * -1;
-            }
 
-        }
+        //if (hit.collider != null)
+        //{
+        //    if (hit.collider.gameObject.CompareTag("Enemy"))
+        //    {
+        //        movHor = movHor * -1;
+        //    }
+
+        //}
+
+        //Debug.DrawRay(new Vector3(transform.position.x + movHor * frontCheck, transform.position.y-0.25f, transform.position.z), new Vector3(movHor, 0, 0), Color.green);
+
+
+        if (hit.collider != null)
+            if (hit.transform != null)
+                if (hit.transform.CompareTag("Enemy"))
+                    movHor = movHor * -1;
+
 
     }
 

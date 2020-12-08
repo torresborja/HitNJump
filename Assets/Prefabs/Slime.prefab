@@ -165,7 +165,7 @@ MonoBehaviour:
   frontGrndRayDist: 0.25
   floorCheckY: 0.52
   frontCheck: 0.51
-  frontDist: 0.5
+  frontDist: 0.001
   scoreGive: 50
 --- !u!61 &1562571683
 BoxCollider2D:
