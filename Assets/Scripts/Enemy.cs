@@ -65,12 +65,28 @@ public class Enemy : MonoBehaviour
                 if (hit.transform.CompareTag("Enemy"))
                     movHor = movHor * -1;
 
-
+        Flip(movHor);
     }
 
     private void FixedUpdate()
     {
         rb.velocity = new Vector2(movHor * speed, rb.velocity.y);
+    }
+
+    private void Flip(float _xValue)
+    {
+        Vector3 theScale = transform.localScale;
+
+        if (_xValue < 0)
+        {
+            theScale.x = Mathf.Abs(theScale.x) * -1;
+        }
+        else if (_xValue > 0)
+        {
+            theScale.x = Mathf.Abs(theScale.x);
+        }
+
+        transform.localScale = theScale;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
