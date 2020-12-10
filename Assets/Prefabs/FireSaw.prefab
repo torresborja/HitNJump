@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 462551975478614835}
   - component: {fileID: 462551975478614834}
   m_Layer: 0
-  m_Name: Fire
+  m_Name: FireSaw
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 4987901684691990599, guid: 139b91f75732c25448e658dcf029d156, type: 3}
+  m_Sprite: {fileID: -3049067163339015078, guid: 90fe75d396fb70a4187a9c4ba3612f4e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -117,9 +117,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.2}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.25
+  m_Radius: 0.55
 --- !u!114 &462551975478614834
 MonoBehaviour:
   m_ObjectHideFlags: 0
