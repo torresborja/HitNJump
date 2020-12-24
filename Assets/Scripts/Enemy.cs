@@ -111,6 +111,8 @@ public class Enemy : MonoBehaviour
 
     private void GetKilled()
     {
+        FXManager.obj.ShowPop(transform.position);
+
         gameObject.SetActive(false);
     }
 }

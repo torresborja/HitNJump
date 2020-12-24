@@ -91,7 +91,9 @@ public class Player : MonoBehaviour
         lives--;
         if (lives <= 0)
         {
-            this.gameObject.SetActive(false);
+            FXManager.obj.ShowPop(transform.position);
+            Game.obj.GameOver();
+            //this.gameObject.SetActive(false);
         }
     }
 
