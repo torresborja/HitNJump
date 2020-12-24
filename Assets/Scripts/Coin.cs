@@ -14,6 +14,7 @@ public class Coin : MonoBehaviour
         {
             Game.obj.AddScore(scoreGive);
 
+            AudioManager.obj.PlayCoin();
             FXManager.obj.ShowPop(transform.position);
             gameObject.SetActive(false);
         }

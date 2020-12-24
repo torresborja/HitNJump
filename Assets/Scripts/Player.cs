@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
     public float jumpForce = 3f;
     public float movHor;
 
-    public float immuneTineCnt = 0f;
+    public float immuneTimeCnt = 0f;
     public float immuneTime = 0.5f;
 
     public LayerMask groundLayer;
@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
     private Rigidbody2D rb;
     private Animator anim;
     private SpriteRenderer spr;
+  
 
     private void Awake()
     {
@@ -53,6 +54,18 @@ public class Player : MonoBehaviour
             Jump();
         }
 
+        if (isImmune)
+        {
+            spr.enabled = !spr.enabled;
+
+            immuneTimeCnt -= Time.deltaTime;
+            if (immuneTimeCnt <= 0)
+            {
+                isImmune = false;
+                spr.enabled = true;
+            }
+        }
+
         anim.SetBool("isMoving", isMoving);
         anim.SetBool("isGrounded", isGrounded);
 
@@ -64,11 +77,19 @@ public class Player : MonoBehaviour
         rb.velocity = new Vector2(movHor * speed, rb.velocity.y);
     }
 
+    private void GoImmune()
+    {
+        isImmune = true;
+        immuneTimeCnt = immuneTime;
+    }
+
     public void Jump()
     {
         if (!isGrounded) return;
 
         rb.velocity = Vector2.up * jumpForce;
+        AudioManager.obj.PlayJump();
+
     }
 
     private void Flip(float _xValue)
@@ -89,6 +110,10 @@ public class Player : MonoBehaviour
     public void GetDamage()
     {
         lives--;
+        AudioManager.obj.PlayHit();
+
+        GoImmune();
+
         if (lives <= 0)
         {
             FXManager.obj.ShowPop(transform.position);
