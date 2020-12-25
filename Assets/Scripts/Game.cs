@@ -21,6 +21,7 @@ public class Game : MonoBehaviour
     void Start()
     {
         gamePaused = false;
+        UIManager.obj.StartGame();
     }
 
     public void AddScore(int scoreGive)

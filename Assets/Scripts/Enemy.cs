@@ -31,6 +31,11 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Game.obj.gamePaused)
+        {
+            return;
+        }
+
         //Evitar caer precipicio
         isGroundFloor = (Physics2D.Raycast(new Vector3(transform.position.x, transform.position.y - floorCheckY, transform.position.z),
             new Vector3(movHor, 0 , 0), frontGrndRayDist, groundLayer));
@@ -70,6 +75,11 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (Game.obj.gamePaused)
+        {
+            return;
+        }
+
         rb.velocity = new Vector2(movHor * speed, rb.velocity.y);
     }
 
